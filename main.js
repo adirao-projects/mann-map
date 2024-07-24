@@ -121,3 +121,7 @@ function add_svg(svg, score, total, color_map) {
     icons += "</div>";
     return icons;
 }
+
+function generate_modal() {
+    
+}

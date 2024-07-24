@@ -27,7 +27,7 @@ const data = [
     imagetypes : ['card'],
     },
     {id : 1,
-    name : "Bike Rack & Public Doc",
+    name : "Bike Rack & Public Dock",
     type : "dock",
     description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     coordinates : [43.629748,-79.425775],
@@ -115,5 +115,32 @@ const data = [
     images : [],
     imagetypes : []
     },
+    {id : 4,
+        name : "Swim Dock",
+        type : "dock",
+        description : "Dock for swimming & Kayak launch",
+        coordinates : [43.631076,-79.409648],
+        meta : {
+            color: 'blue',
+            fillColor: '#30f',
+            fillOpacity: 0.2,
+            radius: 25
+        },
+        facilities : {
+            bathroom : true,
+            parking : true,
+            },
+        docks : {
+            access : true,
+            kayak : true,
+            ball : true
+            },
+        scores : {
+            access : 5,
+            traffic : 5, 
+        },
+        images : [],
+        imagetypes : [],
+        },
     
 ]
