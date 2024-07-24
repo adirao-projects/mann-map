@@ -11,64 +11,56 @@ var base = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+
+var layers = {
+    beach : [],
+    dock : [],
+    route : [],
+    other : []
+}
+
 // Loads in points of interest markers (poi) from data.js file
 for (let i=0; i<data.length; i++) {
     let info = generate_info(data[i]);
 
-    var layers = {
-        beach : [],
-        dock : [],
-        route : [],
-        other : []
-    }
-
     let popup = L.popup({maxHeight:200, maxWidth:400}).setContent(info);
     if (typeof data[i].coordinates[0] == 'number') {
-        let tooltip = L.tooltip(data[i].coordinates, {
+        var tooltip = L.tooltip(data[i].coordinates, {
             content: data[i].nickname,
             permanent: true,
             className: 'tooltip',
             offset: [10, 0],
             opacity: 0.7},
-        )
-        .addTo(map);
+        );
 
-        var mk = L.circle(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
-
-        if (data[i].type == "beach") {
-            layers.beach.push(mk);
-        } else if (data[i].type == "dock") {
-            layers.dock.push(mk);
-        } else if (data[i].type == "swim route") {
-            layers.route.push(mk);
-        } else {
-            layers.other.push(mk);
-        }
+        var mk = L.circle(data[i].coordinates, data[i].meta)
 
         //let type = data[i].type;
         //layers.type.push(mk);
 
     } else {
-        let tooltip = L.tooltip(data[i].coordinates[1], {
+        var tooltip = L.tooltip(data[i].coordinates[1], {
             content: data[i].nickname,
             permanent: true,
             className: 'tooltip',
             offset: [10, 0],
             opacity: 0.7},
-        )
-        .addTo(map);
+        );
 
-        var mk = L.polygon(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
+        var mk = L.polygon(data[i].coordinates, data[i].meta)
 
-        if (data[i].type == "beach") {
-            layers.beach.push(mk);
-        } else if (data[i].type == "dock") {
-            layers.dock.push(mk);
-        } else if (data[i].type == "swim route") {
-            layers.route.push(mk);
-        } else {
-            layers.other.push(mk);
-        }
+    }
+
+    mk.addTo(map).bindPopup(popup).bindTooltip(tooltip);
+
+    if (data[i].type == "beach") {
+        layers.beach.push(mk);
+    } else if (data[i].type == "dock") {
+        layers.dock.push(mk);
+    } else if (data[i].type == "swim route") {
+        layers.route.push(mk);
+    } else {
+        layers.other.push(mk);
     }
 }
 
