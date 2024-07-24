@@ -14,10 +14,27 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Loads in points of interest markers (poi) from data.js file
 for (let i=0; i<data.length; i++) {
     let info = generate_info(data[i]);
+
     let popup = L.popup({maxHeight:200, maxWidth:400}).setContent(info);
     if (typeof data[i].coordinates[0] == 'number') {
+        let tooltip = L.tooltip(data[i].coordinates, {
+            content: data[i].name,
+            permanent: true,
+            className: 'tooltip',
+            offset: [10, 0]},
+        )
+        .addTo(map);
+
         L.circle(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
     } else {
+        let tooltip = L.tooltip(data[i].coordinates[0], {
+            content: data[i].name,
+            permanent: true,
+            className: 'tooltip',
+            offset: [10, 0]},
+        )
+        .addTo(map);
+
         L.polygon(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
     }
 }
@@ -91,7 +108,18 @@ function generate_info(data){
 
     let info = title + desc + ac_vis + traf_vis + dock_text + fac_text + image_gallery;
     info.id = data.id;
-
+    /*
+    let info = {
+        id : data.id,
+        title : title,
+        desc : desc,
+        ac_vis : ac_vis,
+        traf_vis : traf_vis,
+        dock_text : dock_text,
+        fac_text : fac_text,
+        image_gallery : image_gallery
+    }
+    */
     return info;
 }
 
@@ -122,6 +150,12 @@ function add_svg(svg, score, total, color_map) {
     return icons;
 }
 
-function generate_modal() {
-    
+function construct_popup(data) {
+    let into = generate_info(data);
+    return info.title + info.desc + info.ac_vis + info.traf_vis + info.dock_text + info.fac_text + info.image_gallery
+}
+
+function construct_modal(info) {
+    document.getElementById('location-info');
+
 }

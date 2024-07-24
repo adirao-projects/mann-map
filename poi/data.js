@@ -116,31 +116,31 @@ const data = [
     imagetypes : []
     },
     {id : 4,
-        name : "Swim Dock",
-        type : "dock",
-        description : "Dock for swimming & Kayak launch",
-        coordinates : [43.631076,-79.409648],
-        meta : {
-            color: 'blue',
-            fillColor: '#30f',
-            fillOpacity: 0.2,
-            radius: 25
+    name : "Swim Dock",
+    type : "dock",
+    description : "Dock for swimming & Kayak launch",
+    coordinates : [43.631076, -79.409648],
+    meta : {
+        color: 'blue',
+        fillColor: '#30f',
+        fillOpacity: 0.2,
+        radius: 25
+    },
+    facilities : {
+        bathroom : true,
+        parking : true,
         },
-        facilities : {
-            bathroom : true,
-            parking : true,
-            },
-        docks : {
-            access : true,
-            kayak : true,
-            ball : true
-            },
-        scores : {
-            access : 5,
-            traffic : 5, 
+    docks : {
+        access : true,
+        kayak : true,
+        ball : true
         },
-        images : [],
-        imagetypes : [],
-        },
+    scores : {
+        access : 5,
+        traffic : 5, 
+    },
+    images : [],
+    imagetypes : [],
+    },
     
 ]
