@@ -35,9 +35,6 @@ for (let i=0; i<data.length; i++) {
 
         var mk = L.circle(data[i].coordinates, data[i].meta)
 
-        //let type = data[i].type;
-        //layers.type.push(mk);
-
     } else {
         var tooltip = L.tooltip(data[i].coordinates[1], {
             content: data[i].nickname,
@@ -64,16 +61,11 @@ for (let i=0; i<data.length; i++) {
     }
 }
 
-console.log(layers);
-
 var beach = L.layerGroup(layers.beach);
-var route = L.layerGroup(layers.routes);
+var route = L.layerGroup(layers.route);
 var dock = L.layerGroup(layers.dock);
 var other = L.layerGroup(layers.other);
 
-var baseMaps = {
-    "OpenStreetMap": base,
-};
 var overlayMaps = {
     "Beaches": beach,
     "Routes" : route,
@@ -81,13 +73,16 @@ var overlayMaps = {
     "Other" : other,
 };
 
-var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+var layerControl = L.control.layers({}, overlayMaps).addTo(map);
 
-// layerControl.addOverlay(dock, "Docks");
-// layerControl.addOverlay(beach, "Beaches");
-// layerControl.addOverlay(route, "Routes");
-// layerControl.addOverlay(other, "Other")
+/*
+var layerControl = L.control.layers().addTo(map);
 
+layerControl.addOverlay(dock, "Docks");
+layerControl.addOverlay(beach, "Beaches");
+layerControl.addOverlay(route, "Routes");
+layerControl.addOverlay(other, "Other")
+*/
 
 function generate_info(data){
     let title = "<h2 class='m-title'>" + data.name + "</h2>";
