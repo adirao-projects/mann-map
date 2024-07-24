@@ -1,12 +1,12 @@
 //
 
-const lat = 43.628625;
-const long = -79.422964;
+const lat = 43.629338;
+const long = -79.417288;
 const scale = 16;
 
 // Generates and loads map section
 var map = L.map('map').setView([lat,long], scale);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var base = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
@@ -15,29 +15,86 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 for (let i=0; i<data.length; i++) {
     let info = generate_info(data[i]);
 
+    var layers = {
+        beach : [],
+        dock : [],
+        route : [],
+        other : []
+    }
+
     let popup = L.popup({maxHeight:200, maxWidth:400}).setContent(info);
     if (typeof data[i].coordinates[0] == 'number') {
         let tooltip = L.tooltip(data[i].coordinates, {
-            content: data[i].name,
+            content: data[i].nickname,
             permanent: true,
             className: 'tooltip',
-            offset: [10, 0]},
+            offset: [10, 0],
+            opacity: 0.7},
         )
         .addTo(map);
 
-        L.circle(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
+        var mk = L.circle(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
+
+        if (data[i].type == "beach") {
+            layers.beach.push(mk);
+        } else if (data[i].type == "dock") {
+            layers.dock.push(mk);
+        } else if (data[i].type == "swim route") {
+            layers.route.push(mk);
+        } else {
+            layers.other.push(mk);
+        }
+
+        //let type = data[i].type;
+        //layers.type.push(mk);
+
     } else {
-        let tooltip = L.tooltip(data[i].coordinates[0], {
-            content: data[i].name,
+        let tooltip = L.tooltip(data[i].coordinates[1], {
+            content: data[i].nickname,
             permanent: true,
             className: 'tooltip',
-            offset: [10, 0]},
+            offset: [10, 0],
+            opacity: 0.7},
         )
         .addTo(map);
 
-        L.polygon(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
+        var mk = L.polygon(data[i].coordinates, data[i].meta).addTo(map).bindPopup(popup);
+
+        if (data[i].type == "beach") {
+            layers.beach.push(mk);
+        } else if (data[i].type == "dock") {
+            layers.dock.push(mk);
+        } else if (data[i].type == "swim route") {
+            layers.route.push(mk);
+        } else {
+            layers.other.push(mk);
+        }
     }
 }
+
+console.log(layers);
+
+var beach = L.layerGroup(layers.beach);
+var route = L.layerGroup(layers.routes);
+var dock = L.layerGroup(layers.dock);
+var other = L.layerGroup(layers.other);
+
+var baseMaps = {
+    "OpenStreetMap": base,
+};
+var overlayMaps = {
+    "Beaches": beach,
+    "Routes" : route,
+    "Docks" : dock,
+    "Other" : other,
+};
+
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+// layerControl.addOverlay(dock, "Docks");
+// layerControl.addOverlay(beach, "Beaches");
+// layerControl.addOverlay(route, "Routes");
+// layerControl.addOverlay(other, "Other")
 
 
 function generate_info(data){

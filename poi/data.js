@@ -1,9 +1,10 @@
 const data = [
     {id : 0,
-    name : "Ontario Place Redevelopment Beach",
+    name : "Michael Hough Beach",
+    nickname:"Michael Hough Beach",
     type : "beach",
     description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    coordinates : [43.627600,-79.422235],
+    coordinates : [43.627464,-79.420820],
     meta : {
         color: 'red',
         fillColor: '#f03',
@@ -28,6 +29,7 @@ const data = [
     },
     {id : 1,
     name : "Bike Rack & Public Dock",
+    nickname: "Public Dock",
     type : "dock",
     description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     coordinates : [43.629748,-79.425775],
@@ -55,6 +57,7 @@ const data = [
     },
     {id : 2,
     name : "Breakwall",
+    nickname:"Breakwall",
     type : "other",
     description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     coordinates : [
@@ -87,6 +90,7 @@ const data = [
     },
     {id : 3,
     name : "Foot Bridge",
+    nickname:"Foot Bridge",
     type : "other",
     description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     coordinates :   [
@@ -117,6 +121,7 @@ const data = [
     },
     {id : 4,
     name : "Swim Dock",
+    nickname: "Swim Dock",
     type : "dock",
     description : "Dock for swimming & Kayak launch",
     coordinates : [43.631076, -79.409648],
@@ -137,10 +142,65 @@ const data = [
         },
     scores : {
         access : 5,
-        traffic : 5, 
+        traffic : 4, 
     },
     images : [],
     imagetypes : [],
     },
-    
+    {id : 5,
+        name : "Firepit Swim Area",
+        nickname:"Firepit",
+        type : "beach",
+        description : "",
+        coordinates : [43.629352,-79.410150],
+        meta : {
+            color: 'red',
+            fillColor: '#AA0000',
+            fillOpacity: 0.2,
+            radius: 25
+        },
+        facilities : {
+            bathroom : false,
+            parking : false,
+            },
+        docks : {
+            access : false,
+            kayak : true,
+            ball : true
+            },
+        scores : {
+            access : 2,
+            traffic : 2, 
+        },
+        images : [],
+        imagetypes : [],
+        },
+        {id : 6,
+        name : "Flatrock Kayak Launch",
+        nickname: "Flatrock",
+        type : "dock",
+        description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        coordinates :   [43.627390,-79.411997],
+        meta : {
+            color: 'blue',
+            fillColor: '#0000AA',
+            fillOpacity: 0.2,
+            radius: 25
+        }, 
+        facilities : {
+            bathroom : false,
+            parking : false,
+            },
+        docks : {
+            access : false,
+            kayak : true,
+            ball : false,
+            },
+        scores : {
+            access : 2,
+            traffic : 2, 
+        },
+        images : [],
+        imagetypes : []
+        },
 ]
